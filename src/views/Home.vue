@@ -20,8 +20,14 @@ import { getCollection } from '@/composables/getCollection';
 import CreateBookForm from '../components/CreateBookForm.vue'
 import { db } from "../firebase/config"
 import { doc, deleteDoc, updateDoc } from "firebase/firestore"
+// import { getUser } from '@/composables/getUser'
 
-const { documents } = getCollection('books')
+// const { user } = getUser()
+
+const { documents } = getCollection(
+  'books',
+  // ['userUid', '===', user.value?.uid]
+)
 
 const handleDelete = (document: { id: string }) => {
   const docRef = doc(db, 'books', document.id)

@@ -16,8 +16,9 @@
 import { ref } from 'vue'
 import { db } from "../firebase/config"
 import { addDoc, collection } from "firebase/firestore"
+import { getUser } from '@/composables/getUser'
 
-
+const { user } = getUser()
 const title = ref('')
 const author = ref('')
 
@@ -27,7 +28,8 @@ const handleSubmit = async () => {
   await addDoc(colRef, {
     title: title.value,
     author: author.value,
-    isFav: false
+    isFav: false,
+    userUid: user.value?.uid
   })
 
   title.value = ''

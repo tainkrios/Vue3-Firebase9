@@ -19,7 +19,6 @@ const login =async (email:string, password: string) => {
     isPending.value = false
   } catch (err) {
     if (err instanceof Error) {      
-      console.log(err.message)
       error.value = err.message
       isPending.value = false
     }
