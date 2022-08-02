@@ -6,7 +6,7 @@
       <!-- for logged in users -->
       <div>
         <router-link to="/">Home</router-link>
-        <button>Logout</button>
+        <button @click="handleClick">Logout</button>
       </div>
       
       <!-- for logged out users -->
@@ -19,7 +19,12 @@
 </template>
 
 <script setup lang="ts">
+import { auth } from '@/firebase/config'
+import { signOut } from '@firebase/auth';
 
+const handleClick = () => {
+  signOut(auth)
+}
 </script>
 
 <style>
