@@ -20,7 +20,11 @@
 
 <script setup lang="ts">
 import { auth } from '@/firebase/config'
-import { signOut } from '@firebase/auth';
+import { signOut } from '@firebase/auth'
+import { getUser } from '@/composables/getUser'
+
+// eslint-disable-next-line no-unused-vars
+const { user } = getUser()
 
 const handleClick = () => {
   signOut(auth)
