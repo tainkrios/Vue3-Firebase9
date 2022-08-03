@@ -27,17 +27,17 @@ import { getUser } from '@/composables/getUser'
 import { useRouter } from 'vue-router'
 import { watchEffect } from 'vue'
 
-// eslint-disable-next-line no-unused-vars
 const { user } = getUser()
 const router = useRouter()
 
 const handleClick = () => signOut(auth)
 
 watchEffect(() => {
-  if (!user.value) {
+  if (!user.value && router.currentRoute.value.name != 'Signup') {
     router.push('/login')
   }
 })
+
 </script>
 
 <style>
